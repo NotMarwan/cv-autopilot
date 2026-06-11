@@ -236,6 +236,7 @@ def run_tailor(use_llm=False, config=None):
 
         tailored['title'] = translate_title(title)
         job_location = j.get('location', '')
+        tailored.setdefault('personal', {})
         tailored['personal']['location'] = resolve_location(job_location, cfg)
         if use_llm:
             llm_result = llm_rewrite_summary(title, company, sector, base_summary, jd_kws)

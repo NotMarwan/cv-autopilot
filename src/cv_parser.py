@@ -132,23 +132,81 @@ def parse_tex(tex_text):
 
     return cv
 
+SECTION_ALIASES = {
+    'summary':        ['summary', 'profile', 'objective', 'about', 'professional summary'],
+    'skills':         ['skills', 'core skills', 'technical skills', 'key skills'],
+    'experience':     ['experience', 'work experience', 'professional experience', 'employment'],
+    'education':      ['education', 'academic background'],
+    'certifications': ['certifications', 'certificates', 'licenses'],
+    'languages':      ['languages'],
+}
+
+def _match_section(line):
+    """Return the canonical section key if this line is a section header."""
+    stripped = line.strip().rstrip(':')
+    if not stripped or stripped != stripped.upper():
+        return None
+    low = stripped.lower()
+    for key, aliases in SECTION_ALIASES.items():
+        if low in aliases:
+            return key
+    return None
+
 def parse_plaintext(text):
+    """Parse a plain-text CV using ALL-CAPS section headers (SUMMARY, SKILLS, ...)."""
     cv = {
         'name': '', 'title': '', 'contact': {},
         'summary': '', 'skills': [], 'experience': [],
         'education': [], 'certifications': [], 'languages': [],
     }
-    lines = [l.strip() for l in text.strip().split('\n') if l.strip()]
-    if lines:
-        cv['name'] = lines[0]
-    if len(lines) > 1:
-        cv['title'] = lines[1]
+    lines = [l.rstrip() for l in text.strip().split('\n')]
+    nonempty = [l.strip() for l in lines if l.strip()]
+    if nonempty:
+        cv['name'] = nonempty[0]
+    if len(nonempty) > 1 and '@' not in nonempty[1]:
+        cv['title'] = nonempty[1]
     email_m = re.search(r'[\w.+-]+@[\w.]+\.\w+', text)
     if email_m:
         cv['contact']['email'] = email_m.group(0)
     phone_m = re.search(r'\+\d[\d\s\-]{8,}', text)
     if phone_m:
         cv['contact']['phone'] = phone_m.group(0).strip()
+
+    # Bucket lines under ALL-CAPS section headers
+    sections = {}
+    current = None
+    for line in lines:
+        stripped = line.strip()
+        sec = _match_section(stripped) if stripped else None
+        if sec:
+            current = sec
+            sections[current] = []
+        elif current and stripped:
+            sections[current].append(stripped)
+
+    if 'summary' in sections:
+        cv['summary'] = ' '.join(sections['summary'])
+    if 'skills' in sections:
+        raw = ' '.join(sections['skills'])
+        cv['skills'] = [s.strip() for s in re.split(r'[,;·|]', raw) if len(s.strip()) > 1]
+    if 'experience' in sections:
+        entries, role, bullets = [], None, []
+        for line in sections['experience']:
+            if line.startswith(('-', '*', '•')):
+                bullets.append(line.lstrip('-*• ').strip())
+            else:
+                if role:
+                    entries.append({'title': role, 'bullets': bullets})
+                role, bullets = line, []
+        if role:
+            entries.append({'title': role, 'bullets': bullets})
+        cv['experience'] = entries
+    if 'education' in sections:
+        cv['education'] = sections['education']
+    if 'certifications' in sections:
+        cv['certifications'] = sections['certifications']
+    if 'languages' in sections:
+        cv['languages'] = sections['languages']
     return cv
 
 def run(cv_path=None):
