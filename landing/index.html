@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Autopilot — Tailored CVs for Every Job, Automatically</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <nav>
+      <span class="logo">CV Autopilot</span>
+      <a href="https://github.com/NotMarwan/cv-autopilot" class="btn-outline">GitHub →</a>
+    </nav>
+    <div class="hero-content">
+      <h1>Stop sending the same CV to every job.</h1>
+      <p class="subtitle">Upload your base CV. Paste job descriptions. Get tailored, ATS-optimised PDFs in seconds — one per role.</p>
+      <div class="hero-cta">
+        <a href="https://github.com/NotMarwan/cv-autopilot" class="btn-primary">Download Free →</a>
+        <a href="#how" class="btn-ghost">See how it works ↓</a>
+      </div>
+      <p class="hero-note">Python · Open source · Works for any field · Bilingual Arabic / English</p>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat"><span class="stat-number">392</span><span class="stat-label">Jobs analysed</span></div>
+    <div class="stat"><span class="stat-number">29</span><span class="stat-label">CVs tailored from one base</span></div>
+    <div class="stat"><span class="stat-number">0%</span><span class="stat-label">Bounce rate on verified sends</span></div>
+    <div class="stat"><span class="stat-number">8</span><span class="stat-label">Pipeline steps, fully automated</span></div>
+  </section>
+
+  <section class="how" id="how">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Run the setup wizard</h3>
+        <p>One command asks for your name, CV, projects, and target location. Writes your personal config in under 2 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Point it at jobs</h3>
+        <p>Paste job descriptions or let the scraper pull from job boards. The pipeline scores your CV against each role automatically.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Get tailored PDFs</h3>
+        <p>One CV per job — reordered skills, role-matched summary, matching cover letter. LaTeX-rendered, professional output.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>What's included</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">&#127919;</div>
+        <h3>Keyword match scoring</h3>
+        <p>Scores your CV against each job description. Shows what you match and what gaps to address before applying.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128196;</div>
+        <h3>Auto-tailored CVs</h3>
+        <p>Reorders your skills, rewrites the summary, and surfaces the most relevant experience per role. One command, 30 CVs.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#9993;</div>
+        <h3>Role-aware cover letters</h3>
+        <p>6 role categories — networking, security, software, data, sales, support. Each gets a different project emphasis automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#10003;</div>
+        <h3>4-layer email verification</h3>
+        <p>Syntax &#8594; MX &#8594; SMTP RCPT &#8594; catch-all detection. Only sends to addresses that actually exist. Verified sends: 0% bounce.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128269;</div>
+        <h3>Hunter.io enrichment</h3>
+        <p>No recruiter email in the posting? Add a Hunter.io API key and the pipeline finds one by company domain automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#127758;</div>
+        <h3>Bilingual Arabic / English</h3>
+        <p>Built for KSA and MENA job markets. Handles Arabic job titles, company names, and bilingual keyword matching natively.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="before-after">
+    <h2>Before &amp; After</h2>
+    <div class="comparison">
+      <div class="before">
+        <div class="label bad">Generic CV</div>
+        <div class="cv-preview">
+          <p class="cv-summary">"Motivated Computer Engineering graduate seeking a challenging position in the IT field."</p>
+          <p class="cv-skills">Skills: Python, Java, Networking, Linux, SQL</p>
+          <p class="cv-note">Sent to 50 different roles unchanged.</p>
+        </div>
+      </div>
+      <div class="arrow">&#8594;</div>
+      <div class="after">
+        <div class="label good">Tailored CV — Network Engineer @ STC</div>
+        <div class="cv-preview">
+          <p class="cv-summary">"Computer Engineering graduate (GPA 4.87, CCNA) targeting Network Engineer roles. Demonstrated skills in routing, switching, and LAN/WAN that directly align with the position requirements."</p>
+          <p class="cv-skills">Skills: <strong>CCNA, Cisco, BGP, OSPF, LAN/WAN</strong>, Python, Linux, SD-WAN</p>
+          <p class="cv-note match">Match score: 84% · Generated in 0.3s</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quickstart">
+    <h2>Get started in 3 commands</h2>
+    <pre class="code-block"><code>git clone https://github.com/NotMarwan/cv-autopilot
+cd cv-autopilot
+pip install -r requirements.txt
+
+python setup_wizard.py        # enter your details once
+python src/pipeline.py        # tailored CVs ready in output/</code></pre>
+    <a href="https://github.com/NotMarwan/cv-autopilot" class="btn-primary">View on GitHub &#8594;</a>
+  </section>
+
+  <footer>
+    <p>CV Autopilot &middot; Open source &middot; MIT License</p>
+    <p><a href="https://github.com/NotMarwan/cv-autopilot">GitHub</a></p>
+  </footer>
+
+</body>
+</html>

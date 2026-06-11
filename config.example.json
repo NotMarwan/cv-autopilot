@@ -1,0 +1,28 @@
+{
+  "user": {
+    "name": "Your Full Name",
+    "email": "you@example.com",
+    "phone": "+1 555 000 0000",
+    "linkedin": "linkedin.com/in/yourprofile",
+    "location_current": "Your Current City, Country",
+    "location_target": "Target City, Country",
+    "gpa": "3.9/4.0",
+    "grad_year": "2025",
+    "ccna": false
+  },
+  "projects": {
+    "project1": "Describe your strongest project in 2-3 sentences. Include metrics (users, commits, accuracy, etc.).",
+    "project2": "Describe your second project. What was the tech stack? What did you ship?",
+    "coop": "During your internship/co-op at [Company], you did [X]. Grade: [Y]. Hands-on with: [tech list]."
+  },
+  "role_project_map": {
+    "networking":  ["project1", "project2", "coop"],
+    "security":    ["project2", "project1", "coop"],
+    "software":    ["project1", "project2"],
+    "data":        ["project1", "project2"],
+    "sales":       ["project1", "project2"],
+    "support":     ["project1", "project2", "coop"],
+    "general":     ["project1", "project2", "coop"]
+  },
+  "hunterio_api_key": ""
+}
