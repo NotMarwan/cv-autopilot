@@ -63,7 +63,7 @@ def main():
     config["user"]["linkedin"]         = ask("LinkedIn URL (e.g. linkedin.com/in/yourprofile)")
     config["user"]["location_current"] = ask("Current city/country (e.g. Jazan, Saudi Arabia)")
     config["user"]["location_target"]  = ask("Target job location (e.g. Riyadh, Saudi Arabia)")
-    config["user"]["gpa"]              = ask("GPA (e.g. 4.87/5.00) — leave blank to omit", "")
+    config["user"]["gpa"]              = ask("GPA (e.g. 3.8/4.0 or 4.5/5.0) — leave blank to omit", "")
     config["user"]["grad_year"]        = ask("Graduation year", "2025")
     ccna = ask("CCNA certified? (y/N)", "n")
     config["user"]["ccna"] = ccna.lower() == "y"
